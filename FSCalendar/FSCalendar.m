@@ -48,8 +48,6 @@ static BOOL FSCalendarInInterfaceBuilder = NO;
 @property (weak  , nonatomic) UIView                     *contentView;
 @property (weak  , nonatomic) UIView                     *daysContainer;
 @property (weak  , nonatomic) CAShapeLayer               *maskLayer;
-@property (weak  , nonatomic) UIView                     *topBorder;
-@property (weak  , nonatomic) UIView                     *bottomBorder;
 @property (weak  , nonatomic) UICollectionView           *collectionView;
 @property (weak  , nonatomic) UICollectionViewFlowLayout *collectionViewLayout;
 
@@ -150,7 +148,6 @@ static BOOL FSCalendarInInterfaceBuilder = NO;
     
     NSArray *weekSymbols = _calendar.shortStandaloneWeekdaySymbols;
     _weekdays = [NSMutableArray arrayWithCapacity:weekSymbols.count];
-//    UIFont *weekdayFont = [UIFont systemFontOfSize:_appearance.weekdayTextSize];
     for (int i = 0; i < weekSymbols.count; i++) {
         UILabel *weekdayLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         weekdayLabel.text = weekSymbols[i];
@@ -197,16 +194,6 @@ static BOOL FSCalendarInInterfaceBuilder = NO;
     [daysContainer addSubview:collectionView];
     self.collectionView = collectionView;
     self.collectionViewLayout = collectionViewLayout;
-    
-    UIView *view = [[UIView alloc] initWithFrame:CGRectZero];
-    view.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.25];
-    [self addSubview:view];
-    self.topBorder = view;
-    
-    view = [[UIView alloc] initWithFrame:CGRectZero];
-    view.backgroundColor = _topBorder.backgroundColor;
-    [self addSubview:view];
-    self.bottomBorder = view;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(orientationDidChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
     
@@ -267,10 +254,6 @@ static BOOL FSCalendarInInterfaceBuilder = NO;
                                             width,
                                             height);
         }];
-        
-        _topBorder.frame = CGRectMake(0, -1, self.fs_width, 1);
-        _bottomBorder.frame = CGRectMake(0, self.fs_height, self.fs_width, 1);
-        
     }
     
     if (_needsAdjustingTextSize) {
@@ -881,7 +864,6 @@ static BOOL FSCalendarInInterfaceBuilder = NO;
                     [UIView beginAnimations:@"delegateTranslation" context:"translation"];
                     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
                     [UIView setAnimationDuration:0.3];
-                    _bottomBorder.frame = CGRectMake(0, size.height, self.fs_width, 1);
                     [_delegate calendarCurrentScopeWillChange:self animated:animated];
                     [UIView commitAnimations];
                 }
@@ -889,7 +871,6 @@ static BOOL FSCalendarInInterfaceBuilder = NO;
             } else {
                 
                 _needsAdjustingViewFrame = weekToMonth;
-                _bottomBorder.frame = CGRectMake(0, size.height, self.fs_width, 1);
                 transitionCompletion();
                 
                 if (_delegate && [_delegate respondsToSelector:@selector(calendarCurrentScopeWillChange:animated:)]) {
