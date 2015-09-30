@@ -154,10 +154,14 @@
     [UIBezierPath bezierPathWithOvalInRect:_backgroundLayer.bounds].CGPath :
     [UIBezierPath bezierPathWithRect:_backgroundLayer.bounds].CGPath;
     
-    _backgroundLayer.cornerRadius = CGRectGetWidth(_backgroundLayer.bounds)/2;
-    _backgroundLayer.borderWidth = 2;
-    _backgroundLayer.borderColor = [UIColor whiteColor].CGColor;
-    _backgroundLayer.masksToBounds = YES;
+    if (self.isSelected || (self.dateIsSelected && !_deselecting)) {
+        _backgroundLayer.cornerRadius = CGRectGetWidth(_backgroundLayer.bounds)/2;
+        _backgroundLayer.borderWidth = 2;
+        _backgroundLayer.borderColor = [UIColor whiteColor].CGColor;
+        _backgroundLayer.masksToBounds = YES;
+    } else {
+        _backgroundLayer.borderColor = [UIColor clearColor].CGColor;
+    }
     
     _eventLayer.hidden = !_hasEvent;
     _eventLayer.fillColor = _appearance.eventColor.CGColor;

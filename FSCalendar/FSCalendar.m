@@ -151,6 +151,7 @@ static BOOL FSCalendarInInterfaceBuilder = NO;
     for (int i = 0; i < weekSymbols.count; i++) {
         UILabel *weekdayLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         weekdayLabel.text = weekSymbols[i];
+        weekdayLabel.text = [weekdayLabel.text uppercaseString];
         weekdayLabel.textAlignment = NSTextAlignmentCenter;
         weekdayLabel.font = _appearance.weekdayFont;
         weekdayLabel.textColor = _appearance.weekdayTextColor;
