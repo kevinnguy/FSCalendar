@@ -153,6 +153,12 @@
     _backgroundLayer.path = _appearance.cellStyle == FSCalendarCellStyleCircle ?
     [UIBezierPath bezierPathWithOvalInRect:_backgroundLayer.bounds].CGPath :
     [UIBezierPath bezierPathWithRect:_backgroundLayer.bounds].CGPath;
+    
+    _backgroundLayer.cornerRadius = CGRectGetWidth(_backgroundLayer.bounds)/2;
+    _backgroundLayer.borderWidth = 2;
+    _backgroundLayer.borderColor = [UIColor whiteColor].CGColor;
+    _backgroundLayer.masksToBounds = YES;
+    
     _eventLayer.hidden = !_hasEvent;
     _eventLayer.fillColor = _appearance.eventColor.CGColor;
     

@@ -32,6 +32,8 @@
     
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStyleBordered target:nil action:nil];
     
+    self.calendar.backgroundColor = [UIColor lightGrayColor];
+    
     _currentCalendar = [NSCalendar currentCalendar];
 //    _firstWeekday = _calendar.firstWeekday;
 //    _calendar.firstWeekday = 2; // Monday
