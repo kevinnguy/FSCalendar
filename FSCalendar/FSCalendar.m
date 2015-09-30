@@ -736,6 +736,7 @@ static BOOL FSCalendarInInterfaceBuilder = NO;
     _needsReloadingSelectingDates = YES;
     [_collectionView reloadData];
     [_header reloadData];
+    [self selectDate:_today];
 }
 
 - (void)setScope:(FSCalendarScope)scope animated:(BOOL)animated
@@ -939,7 +940,7 @@ static BOOL FSCalendarInInterfaceBuilder = NO;
             [_selectedDates removeObject:cell.date];
         }
         [_collectionView selectItemAtIndexPath:selectedIndexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
-        
+        [self collectionView:_collectionView didSelectItemAtIndexPath:selectedIndexPath];
     }
     
     if (scrollToDate) {
