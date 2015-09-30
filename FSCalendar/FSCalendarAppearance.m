@@ -66,6 +66,10 @@
         _cellStyle = FSCalendarCellStyleCircle;
         _eventColor = [kBlue colorWithAlphaComponent:0.75];
         
+        _titleTextFont = [UIFont systemFontOfSize:_titleTextSize];
+        _subtitleTextFont = [UIFont systemFontOfSize:_subtitleTextSize];
+        _weekdayFont = [UIFont systemFontOfSize:_weekdayTextSize];
+        _headerTitleFont = [UIFont systemFontOfSize:_headerTitleTextSize];
     }
     return self;
 }

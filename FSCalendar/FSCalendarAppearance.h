@@ -52,6 +52,11 @@ typedef NS_OPTIONS(NSInteger, FSCalendarCellStyle) {
 @property (assign, nonatomic) BOOL autoAdjustTitleSize;
 @property (assign, nonatomic) BOOL useVeryShortWeekdaySymbols;
 
+@property (strong, nonatomic) UIFont *titleTextFont;
+@property (strong, nonatomic) UIFont *subtitleTextFont;
+@property (strong, nonatomic) UIFont *weekdayFont;
+@property (strong, nonatomic) UIFont *headerTitleFont;
+
 // For preview only
 @property (assign, nonatomic) BOOL      fakeSubtitles;
 @property (assign, nonatomic) NSInteger fakedSelectedDay;

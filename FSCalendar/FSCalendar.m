@@ -150,12 +150,12 @@ static BOOL FSCalendarInInterfaceBuilder = NO;
     
     NSArray *weekSymbols = _calendar.shortStandaloneWeekdaySymbols;
     _weekdays = [NSMutableArray arrayWithCapacity:weekSymbols.count];
-    UIFont *weekdayFont = [UIFont systemFontOfSize:_appearance.weekdayTextSize];
+//    UIFont *weekdayFont = [UIFont systemFontOfSize:_appearance.weekdayTextSize];
     for (int i = 0; i < weekSymbols.count; i++) {
         UILabel *weekdayLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         weekdayLabel.text = weekSymbols[i];
         weekdayLabel.textAlignment = NSTextAlignmentCenter;
-        weekdayLabel.font = weekdayFont;
+        weekdayLabel.font = _appearance.weekdayFont;
         weekdayLabel.textColor = _appearance.weekdayTextColor;
         [_weekdays addObject:weekdayLabel];
         [contentView addSubview:weekdayLabel];
@@ -731,7 +731,7 @@ static BOOL FSCalendarInInterfaceBuilder = NO;
     _minimumDate = self.minimumDateForCalendar;
     _maximumDate = self.maximumDateForCalendar;
     
-    [_weekdays setValue:[UIFont systemFontOfSize:_appearance.weekdayTextSize] forKey:@"font"];
+    [_weekdays setValue:_appearance.weekdayFont forKey:@"font"];
     CGFloat width = self.fs_width/_weekdays.count;
     CGFloat height = kFSCalendarDefaultWeekHeight;
 //    [_calendar.shortStandaloneWeekdaySymbols enumerateObjectsUsingBlock:^(NSString *symbol, NSUInteger index, BOOL *stop) {

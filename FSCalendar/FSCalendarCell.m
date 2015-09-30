@@ -123,9 +123,9 @@
 
 - (void)configureCell
 {
-    _titleLabel.font = [UIFont systemFontOfSize:_appearance.titleTextSize];
+    _titleLabel.font = _appearance.titleTextFont;
     _titleLabel.text = [NSString stringWithFormat:@"%@",@(_date.fs_day)];
-    _subtitleLabel.font = [UIFont systemFontOfSize:_appearance.subtitleTextSize];
+    _subtitleLabel.font = _appearance.subtitleTextFont;
     _subtitleLabel.text = _subtitle;
     _titleLabel.textColor = [self colorForCurrentStateInDictionary:_appearance.titleColors];
     _subtitleLabel.textColor = [self colorForCurrentStateInDictionary:_appearance.subtitleColors];
