@@ -164,6 +164,9 @@
             break;
         }
     }
+    
+    cell.titleLabel.text = [cell.titleLabel.text uppercaseString];
+    
     [cell setNeedsLayout];
     return cell;
 }
