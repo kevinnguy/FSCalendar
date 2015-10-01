@@ -69,11 +69,10 @@ typedef NS_ENUM(NSInteger, FSCalendarCellState) {
 
 @end
 
-IB_DESIGNABLE
 @interface FSCalendar : UIView
 
-@property (weak, nonatomic) IBOutlet id<FSCalendarDelegate> delegate;
-@property (weak, nonatomic) IBOutlet id<FSCalendarDataSource> dataSource;
+@property (weak, nonatomic) id<FSCalendarDelegate> delegate;
+@property (weak, nonatomic) id<FSCalendarDataSource> dataSource;
 
 @property (strong, nonatomic) NSDate *today;
 @property (strong, nonatomic) NSDate *currentPage;
@@ -81,9 +80,9 @@ IB_DESIGNABLE
 
 @property (assign, nonatomic) FSCalendarScrollDirection scrollDirection;
 @property (assign, nonatomic) FSCalendarScope scope;
-@property (assign, nonatomic) IBInspectable NSUInteger firstWeekday;
-@property (assign, nonatomic) IBInspectable CGFloat headerHeight;
-@property (assign, nonatomic) IBInspectable BOOL allowsMultipleSelection;
+@property (assign, nonatomic) NSUInteger firstWeekday;
+@property (assign, nonatomic) CGFloat headerHeight;
+@property (assign, nonatomic) BOOL allowsMultipleSelection;
 
 @property (readonly, nonatomic) FSCalendarAppearance *appearance;
 @property (readonly, nonatomic) NSDate *minimumDate;
